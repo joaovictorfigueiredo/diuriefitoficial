@@ -17,10 +17,7 @@
   }
 
   /* Diferentes imagens de fundo por dispositivo */
-  @media (min-width: 1025px) {
-    .background { background-image: url('https://i.imgur.com/jAWPxAt.png'); }
-  }
-  @media (min-width: 768px) and (max-width: 1024px) {
+  @media (min-width: 768px) {
     .background { background-image: url('https://i.imgur.com/jAWPxAt.png'); }
   }
   @media (max-width: 767px) {
@@ -46,19 +43,11 @@
     pointer-events: auto;
   }
 
-  /* Imagem do modal (desktop padrão) */
+  /* Imagem do modal */
   #affiliateImage {
     width: 100%;
     border-radius: 10px;
     cursor: pointer;
-    content: url('https://i.imgur.com/MpBhkmo.png'); /* imagem desktop */
-  }
-
-  /* Troca para imagem mobile */
-  @media (max-width: 767px) {
-    #affiliateImage {
-      content: url('https://i.imgur.com/ppz9U6k.png'); /* imagem mobile */
-    }
   }
 </style>
 </head>
@@ -81,6 +70,11 @@
     // Mostrar modal com animação
     setTimeout(() => { modal.classList.add('show'); }, 500);
 
+    // Trocar imagem do modal para mobile se for tela pequena
+    if (window.innerWidth <= 767) {
+      image.src = "https://i.imgur.com/ppz9U6k.png";
+    }
+
     // Redirecionar para link de afiliado ao clicar
     image.addEventListener('click', function() {
       window.location.href = "https://app.monetizze.com.br/r/AYC25565254";
@@ -89,5 +83,4 @@
 </script>
 
 </body>
-
 </html>
